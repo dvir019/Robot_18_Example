@@ -17,6 +17,8 @@ public class ElevatorSubsystem extends Subsystem {
     private DigitalInput switch1;
     private DigitalInput switch2;
     
+	// Constructor and SingleRon
+    
     /**
 	 * The constructor of the class
 	 */
@@ -25,15 +27,6 @@ public class ElevatorSubsystem extends Subsystem {
     	switch1 = new DigitalInput(RobotMap.ELEVATOR_SWITCH_1);
     	switch2 = new DigitalInput(RobotMap.ELEVATOR_SWITCH_2);
     }
-    
-    public void setSpark(double speed) {
-		if (speed >= -1 && speed <= 1)
-			spark.set(speed);
-	}
-    
-    public boolean stop() {
-		return switch1.get() || switch2.get();
-	}
     
     /**
 	 * SingleTon for the class
@@ -45,10 +38,33 @@ public class ElevatorSubsystem extends Subsystem {
     		instance = new ElevatorSubsystem();
     	return instance;
     }
+    
+    
+	// Methods
+
+    /**
+     * Set the speed of the spark
+     * 
+     * @param speed - The new speed
+     */
+    public void setSpark(double speed) {
+		if (speed >= -1 && speed <= 1)
+			spark.set(speed);
+	}
+    
+    /**
+     * Check if one of the switches are closed, and the elevator should stop moving
+     * 
+     * @return true if one of them close, else false
+     */
+    public boolean stop() {
+		return switch1.get() || switch2.get();
+	}
+    
+
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        
     }
 }
 

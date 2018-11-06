@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class DrivingSubsystem extends Subsystem {
+	
+	// Fields
 
     private static DrivingSubsystem instance;
     private WPI_TalonSRX topLeftTalon;
@@ -31,6 +33,11 @@ public class DrivingSubsystem extends Subsystem {
     private final double minSpeed = -1;
     
     
+	// Constructor and SingleRon
+
+	/**
+	 * The constructor of the class
+	 */
     private DrivingSubsystem() {
     	topLeftTalon = new WPI_TalonSRX(RobotMap.TOP_LEFT_TALON);
     	topLeftTalon.setSafetyEnabled(true);
@@ -57,6 +64,27 @@ public class DrivingSubsystem extends Subsystem {
     	SmartDashboard.putNumber("Bottom Right Encoder", bottomRightTalon.getSelectedSensorPosition(0));
     }
     
+    /**
+	 * SingleTon for the class
+	 * 
+	 * @return An instance of the class
+	 */
+    public static DrivingSubsystem getInstance() {
+    	if (instance==null)
+    		instance = new DrivingSubsystem();
+    	return instance;
+    }
+    
+    
+	// Methods
+        
+    /**
+     * Set the speed of the talons
+     * In addition, update the SmartDashboard's information about the encoders
+     * 
+     * @param leftSpeed - The new speed of the left talons
+     * @param rightSpeed - The new speed of the right talons
+     */
     public void setTalons(double leftSpeed, double rightSpeed) {
     	if (leftSpeed > maxSpeed)
 			leftSpeed = maxSpeed;
@@ -75,12 +103,10 @@ public class DrivingSubsystem extends Subsystem {
     	SmartDashboard.putNumber("Bottom Right Encoder", bottomRightTalon.getSelectedSensorPosition(0));
     }
     
-    public static DrivingSubsystem getInstance() {
-    	if (instance==null)
-    		instance = new DrivingSubsystem();
-    	return instance;
-    }
 
+    /**
+     * Set a default command for the subsystem
+     */
     public void initDefaultCommand() {
         setDefaultCommand(new DrivingCommand());
     }
