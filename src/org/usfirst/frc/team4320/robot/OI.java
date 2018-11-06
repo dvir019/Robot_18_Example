@@ -12,6 +12,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 import org.usfirst.frc.team4320.robot.commands.ElevatorCommand;
 import org.usfirst.frc.team4320.robot.commands.GripperWheelsCommand;
 import org.usfirst.frc.team4320.robot.commands.OpenCloseGripperInstantCommand;
+import org.usfirst.frc.team4320.robot.commands.OverrideGripperSubsystem;
 import org.usfirst.frc.team4320.robot.commands.ShifterInstantCommand;
 import org.usfirst.frc.team4320.robot.commands.UpDownGripperInstantCommand;
 
@@ -49,7 +50,7 @@ public class OI {
 		rotateGripperWheels.whileHeld(new GripperWheelsCommand());
 		
 		gripperOverride = new JoystickButton(xbox, 6); // KB
-		//gripperOverride.whenPressed(new );
+		gripperOverride.whenPressed(new OverrideGripperSubsystem());
 		
 		shifterButton = new JoystickButton(joystick, 1);
 		shifterButton.whenPressed(new ShifterInstantCommand());

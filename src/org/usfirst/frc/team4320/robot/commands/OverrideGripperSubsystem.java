@@ -7,17 +7,18 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 /**
  *
  */
-public class OpenCloseGripperInstantCommand extends InstantCommand {
-	
-	private GripperSubsystem gripperSubsystem;
+public class OverrideGripperSubsystem extends InstantCommand {
 
-    public OpenCloseGripperInstantCommand() {
+	private GripperSubsystem gripperSubsystem;
+	
+    public OverrideGripperSubsystem() {
         gripperSubsystem = GripperSubsystem.getInstance();
         requires(gripperSubsystem);
     }
 
     // Called once when the command executes
     protected void initialize() {
-    	gripperSubsystem.swapOpenClose();
+    	gripperSubsystem.swapOverride();
     }
+
 }

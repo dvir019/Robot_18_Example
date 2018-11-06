@@ -6,6 +6,7 @@ import Classes.DoubleSol;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -20,12 +21,16 @@ public class GripperSubsystem extends Subsystem {
     private Spark rightSpark;
     private DigitalInput switch1;
     
+    private boolean override = false;
+    
     private GripperSubsystem() {
     	openCloseSol = new DoubleSol(RobotMap.OPEN_SOL, RobotMap.CLOSE_SOL);
     	upDownSol = new DoubleSol(RobotMap.UP_SOL, RobotMap.DOWN_SOL);
     	leftSpark = new Spark(RobotMap.LEFT_SPARK);
     	rightSpark = new Spark(RobotMap.RIGHT_SPARK);
     	switch1 = new DigitalInput(RobotMap.GRIPPER_SWITCH);
+    	
+    	SmartDashboard.putBoolean("Override Gripper", override);
     }
     
     public void swapOpenClose() {
@@ -45,6 +50,18 @@ public class GripperSubsystem extends Subsystem {
     
     public boolean getSwitch() {
     	return switch1.get();
+    }
+    
+    public void swapOverride() {
+    	if (override)
+    		override = false;
+    	else
+    		override = true;
+    	SmartDashboard.putBoolean("Override Gripper", override);
+    }
+    
+    public boolean getOverride() {
+    	return override;
     }
     
     public static GripperSubsystem getInstance() {

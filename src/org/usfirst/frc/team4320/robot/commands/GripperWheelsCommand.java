@@ -14,6 +14,7 @@ public class GripperWheelsCommand extends Command {
     public GripperWheelsCommand() {
         gripperSubsystem = GripperSubsystem.getInstance();
         requires(gripperSubsystem);
+        setInterruptible(true);
     }
 
     // Called just before this Command runs the first time
@@ -28,6 +29,8 @@ public class GripperWheelsCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if (gripperSubsystem.getOverride())
+    		return false;
         return gripperSubsystem.getSwitch();
     }
 

@@ -49,5 +49,6 @@ public class DoubleSol {
 			reverse();
 		else
 			forward();
+		
 	}
 }
