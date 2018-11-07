@@ -9,23 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
- */
-/**
- * @author Horim
- *
- */
-/**
- * @author Horim
- *
- */
-/**
- * @author Horim
- *
- */
-/**
- * @author Horim
- *
+ * Subsystem for the gripper
  */
 public class GripperSubsystem extends Subsystem {
 
@@ -57,9 +41,9 @@ public class GripperSubsystem extends Subsystem {
     }
     
     /**
-	 * SingleTon for the class
-	 * 
-	 * @return An instance of the class
+     * SingleTon for the class
+     * 
+     * @return An instance of the class
 	 */
     public static GripperSubsystem getInstance() {
     	if (instance==null)

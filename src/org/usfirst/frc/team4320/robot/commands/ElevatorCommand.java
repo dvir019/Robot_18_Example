@@ -7,12 +7,15 @@ import org.usfirst.frc.team4320.robot.subsystems.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Command for controlling the speed of the elevator
  */
 public class ElevatorCommand extends Command {
 	
 	private ElevatorSubsystem elevatorSubsystem;
 
+	/**
+	 * The constructor of the class
+	 */
     public ElevatorCommand() {
         elevatorSubsystem = ElevatorSubsystem.getInstance();
     	requires(elevatorSubsystem);
@@ -22,13 +25,15 @@ public class ElevatorCommand extends Command {
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    /**
+     * Set the speed of the spark according to the Y coordinate of the right joysick of the Xbox
+     */
     protected void execute() {
     	elevatorSubsystem.setSpark(OI.getInstance().getXboxRightJoystickY());
     }
 
 	/**
-	 * Checks if the switch closed
+	 * Checks if the switch is closed
 	 * 
 	 * @return true if the command needs to stop to execute, else false
 	 */
@@ -36,7 +41,9 @@ public class ElevatorCommand extends Command {
         return elevatorSubsystem.stop();
     }
 
-    // Called once after isFinished returns true
+    /**
+     * Stop the elevator
+     */
     protected void end() {
     	elevatorSubsystem.setSpark(0);
     }

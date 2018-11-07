@@ -8,13 +8,14 @@ import org.usfirst.frc.team4320.robot.commands.DrivingCommand;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ * Subsystem for driving the robot
  */
 public class DrivingSubsystem extends Subsystem {
 	
@@ -28,6 +29,7 @@ public class DrivingSubsystem extends Subsystem {
     private SpeedControllerGroup leftTalons;
     private SpeedControllerGroup rightTalons;
     private DifferentialDrive differentialDrive;
+    private AnalogGyro gyro;
     
     private final double maxSpeed = 1;
     private final double minSpeed = -1;
@@ -57,11 +59,14 @@ public class DrivingSubsystem extends Subsystem {
     	
     	differentialDrive = new DifferentialDrive(leftTalons, rightTalons);
     	
+    	gyro = new AnalogGyro(RobotMap.GYRO);
+    	
     	// SmartDashboard
-    	SmartDashboard.putNumber("Top Left Encoder", topLeftTalon.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("Top Right Encoder", topRightTalon.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("Bottom Left Encoder", bottomLeftTalon.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("Bottom Right Encoder", bottomRightTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Top Left Encoder", (double)topLeftTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Top Right Encoder", (double)topRightTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Bottom Left Encoder", (double)bottomLeftTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Bottom Right Encoder", (double)bottomRightTalon.getSelectedSensorPosition(arg0));
+    	SmartDashboard.putNumber("Gyro", gyro.getAngle());
     }
     
     /**
@@ -97,10 +102,11 @@ public class DrivingSubsystem extends Subsystem {
 		differentialDrive.tankDrive(leftSpeed, rightSpeed);
 		
 		// SmartDashboard
-    	SmartDashboard.putNumber("Top Left Encoder", topLeftTalon.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("Top Right Encoder", topRightTalon.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("Bottom Left Encoder", bottomLeftTalon.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("Bottom Right Encoder", bottomRightTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Top Left Encoder", (double)topLeftTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Top Right Encoder", (double)topRightTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Bottom Left Encoder", (double)bottomLeftTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Bottom Right Encoder", (double)bottomRightTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Gyro", gyro.getAngle());
     }
     
 

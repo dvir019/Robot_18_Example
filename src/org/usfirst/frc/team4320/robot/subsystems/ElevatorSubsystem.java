@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Subsystem for the elevator
  */
 public class ElevatorSubsystem extends Subsystem {
 

@@ -6,7 +6,7 @@ import Classes.DoubleSol;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Subsystem for the shifter's state switching
  */
 public class ShifterSubsystem extends Subsystem {
 	

@@ -6,12 +6,15 @@ import org.usfirst.frc.team4320.robot.subsystems.DrivingSubsystem;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Command for driving the robot
  */
 public class DrivingCommand extends Command {
 	
 	private DrivingSubsystem drivingSubsystem;
 
+	/**
+	 * The constructor of the class
+	 */
     public DrivingCommand() {
         drivingSubsystem = DrivingSubsystem.getInstance();
         requires(drivingSubsystem);
@@ -21,7 +24,9 @@ public class DrivingCommand extends Command {
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    /**
+     * Set the speed of the talons according to the joystick 
+     */
     protected void execute() {
     	drivingSubsystem.setTalons(OI.getInstance().getJoystickX(), OI.getInstance().getJoystickY());
     }

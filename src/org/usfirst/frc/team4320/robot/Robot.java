@@ -28,10 +28,6 @@ import org.usfirst.frc.team4320.robot.subsystems.GripperSubsystem;
 public class Robot extends TimedRobot {
 	public static OI oi;
 	
-	// Subsystems
-	public static ElevatorSubsystem elevatorSubsystem;
-	public static GripperSubsystem gripperSubsystem;
-	public static DrivingSubsystem drivingSubsystem;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -44,11 +40,8 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = OI.getInstance();
 		//m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		//chooser.addObject("My Auto", new MyAutoCommand());
 		//SmartDashboard.putData("Auto mode", m_chooser);
-		elevatorSubsystem = ElevatorSubsystem.getInstance();
-		gripperSubsystem = GripperSubsystem.getInstance();
-		drivingSubsystem = DrivingSubsystem.getInstance();
 	}
 
 	/**

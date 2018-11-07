@@ -5,13 +5,16 @@ import org.usfirst.frc.team4320.robot.subsystems.GripperSubsystem;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Command for setting the gripper's wheels speed
  */
 public class GripperWheelsCommand extends Command {
 	
 	private GripperSubsystem gripperSubsystem;
 
-    public GripperWheelsCommand() {
+	/**
+	 * The constructor of the class
+	 */
+	public GripperWheelsCommand() {
         gripperSubsystem = GripperSubsystem.getInstance();
         requires(gripperSubsystem);
         setInterruptible(true);
@@ -21,20 +24,30 @@ public class GripperWheelsCommand extends Command {
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    /**
+     * Set the gripper's sparks to 1 and -1
+     */
     protected void execute() {
     	gripperSubsystem.setLeftSpark(1);
     	gripperSubsystem.setRightSpark(-1);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    /**
+     * Check if the wheels should stop spinning
+     * If override mode is activated, always return false
+     * If it's not activated, check if the micro-switch is pressed
+     * 
+     * @return false if override mode is activated, or the micro-switch is closed, else true
+     */
     protected boolean isFinished() {
     	if (gripperSubsystem.getOverride())
     		return false;
         return gripperSubsystem.getSwitch();
     }
 
-    // Called once after isFinished returns true
+    /**
+     * Stop the sparks
+     */
     protected void end() {
     	gripperSubsystem.setLeftSpark(0);
     	gripperSubsystem.setRightSpark(0);

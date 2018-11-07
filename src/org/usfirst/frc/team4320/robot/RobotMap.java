@@ -22,6 +22,9 @@ public class RobotMap {
 	public static final int BOTTOM_LEFT_TALON = 2;
 	public static final int BOTTOM_RIGHT_TALON = 3;
 	
+	// DrivingSubsystem - Analog
+	public static final int GYRO = 0;
+	
 	
 	// ElevatorSubsystem - PWM
 	public static final int SPARK_PORT = 4;
