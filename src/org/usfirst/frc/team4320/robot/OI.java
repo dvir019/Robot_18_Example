@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team4320.robot;
+
 import javax.management.relation.RelationService;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
@@ -27,7 +28,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	private static OI instance = null;
-	
+
 	private XboxController xbox;
 	private Joystick joystick;
 	private JoystickButton openCloseGripper;
@@ -35,39 +36,39 @@ public class OI {
 	private JoystickButton rotateGripperWheels;
 	private JoystickButton shifterButton;
 	private JoystickButton gripperOverride;
-	
+
 	private OI() {
 		xbox = new XboxController(RobotMap.XBOX_CONTROLLER);
 		joystick = new Joystick(RobotMap.JOYSTICK);
-		
-		openCloseGripper = new JoystickButton(xbox, 1); //A
+
+		openCloseGripper = new JoystickButton(xbox, 1); // A
 		openCloseGripper.whenPressed(new OpenCloseGripperInstantCommand());
-		
-		upDownGripper = new JoystickButton(xbox, 2); //B
+
+		upDownGripper = new JoystickButton(xbox, 2); // B
 		upDownGripper.whenPressed(new UpDownGripperInstantCommand());
-		
-		rotateGripperWheels = new JoystickButton(xbox, 3); //X
+
+		rotateGripperWheels = new JoystickButton(xbox, 3); // X
 		rotateGripperWheels.whileHeld(new GripperWheelsCommand());
-		
+
 		gripperOverride = new JoystickButton(xbox, 6); // KB
 		gripperOverride.whenPressed(new OverrideGripperSubsystem());
-		
+
 		shifterButton = new JoystickButton(joystick, 1);
 		shifterButton.whenPressed(new ShifterInstantCommand());
 	}
-	
+
 	public double getXboxRightJoystickY() {
 		return xbox.getY(GenericHID.Hand.kRight);
 	}
-	
+
 	public double getJoystickX() {
 		return joystick.getX();
 	}
-	
+
 	public double getJoystickY() {
 		return joystick.getY();
 	}
-	
+
 	public static OI getInstance() {
 		if (instance == null)
 			instance = new OI();

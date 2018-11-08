@@ -9,40 +9,46 @@ import edu.wpi.first.wpilibj.command.Command;
  * Command for driving the robot
  */
 public class DrivingCommand extends Command {
-	
+
+	// Fields
+
 	private DrivingSubsystem drivingSubsystem;
+
+	// Constructor
 
 	/**
 	 * The constructor of the class
 	 */
-    public DrivingCommand() {
-        drivingSubsystem = DrivingSubsystem.getInstance();
-        requires(drivingSubsystem);
-    }
+	public DrivingCommand() {
+		drivingSubsystem = DrivingSubsystem.getInstance();
+		requires(drivingSubsystem);
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	// Methods
 
-    /**
-     * Set the speed of the talons according to the joystick 
-     */
-    protected void execute() {
-    	drivingSubsystem.setTalons(OI.getInstance().getJoystickX(), OI.getInstance().getJoystickY());
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	/**
+	 * Set the speed of the talons according to the joystick
+	 */
+	protected void execute() {
+		drivingSubsystem.setTalons(OI.getInstance().getJoystickX(), OI.getInstance().getJoystickY());
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	drivingSubsystem.setTalons(0, 0);
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return false;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		drivingSubsystem.setTalons(0, 0);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

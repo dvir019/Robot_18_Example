@@ -8,21 +8,27 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
  * Command for opening and closing the gripper
  */
 public class OpenCloseGripperInstantCommand extends InstantCommand {
-	
+
+	// Fields
+
 	private GripperSubsystem gripperSubsystem;
+
+	// Constructor
 
 	/**
 	 * The constructor of the class
 	 */
 	public OpenCloseGripperInstantCommand() {
-        gripperSubsystem = GripperSubsystem.getInstance();
-        requires(gripperSubsystem);
-    }
+		gripperSubsystem = GripperSubsystem.getInstance();
+		requires(gripperSubsystem);
+	}
 
-    /**
-     * Switch between the states of the doubleSol
-     */
-    protected void initialize() {
-    	gripperSubsystem.swapOpenClose();
-    }
+	// Methods
+
+	/**
+	 * Switch between the states of the doubleSol
+	 */
+	protected void initialize() {
+		gripperSubsystem.swapOpenClose();
+	}
 }

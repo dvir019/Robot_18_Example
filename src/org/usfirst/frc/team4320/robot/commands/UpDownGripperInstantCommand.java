@@ -9,22 +9,27 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
  */
 public class UpDownGripperInstantCommand extends InstantCommand {
 
+	// Fields
+
 	private GripperSubsystem gripperSubsystem;
-	
+
+	// Constructor
+
 	/**
 	 * The constructor of the class
 	 */
-    public UpDownGripperInstantCommand() {
-    	gripperSubsystem = GripperSubsystem.getInstance();
-        requires(gripperSubsystem);
-    }
+	public UpDownGripperInstantCommand() {
+		gripperSubsystem = GripperSubsystem.getInstance();
+		requires(gripperSubsystem);
+	}
 
-    
-    /**
-     * Switch between the states of the doubleSol
-     */
-    protected void initialize() {
-    	gripperSubsystem.swapUpDown();
-    }
+	// Methods
+
+	/**
+	 * Switch between the states of the doubleSol
+	 */
+	protected void initialize() {
+		gripperSubsystem.swapUpDown();
+	}
 
 }

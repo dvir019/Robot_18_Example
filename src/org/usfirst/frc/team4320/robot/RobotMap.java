@@ -46,7 +46,15 @@ public class RobotMap {
 	
 	// ShifterSubsystem - PCM
 	public static final int OPEN_SHIFTER = 4;
-	public static final int CLOSE_SHIFTER = 4;
+	public static final int CLOSE_SHIFTER = 5;
+	
+	
+	// CompressorSubsystem - PCM
+	public static final int COMPRESSOR = 10;
+	
+	// CompressorSubsystem - Analog
+	public static final int PRESSURE_SENSOR = 1;
+	
 	
 	
 	// OI - Driver station

@@ -9,19 +9,25 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
  */
 public class OverrideGripperSubsystem extends InstantCommand {
 
+	// Fields
+
 	private GripperSubsystem gripperSubsystem;
-	
+
+	// Constructor
+
 	/**
 	 * The constructor of the class
 	 */
 	public OverrideGripperSubsystem() {
-        gripperSubsystem = GripperSubsystem.getInstance();
-        requires(gripperSubsystem);
-    }
+		gripperSubsystem = GripperSubsystem.getInstance();
+		requires(gripperSubsystem);
+	}
 
-    // Called once when the command executes
-    protected void initialize() {
-    	gripperSubsystem.swapOverride();
-    }
+	// Methods
+
+	// Called once when the command executes
+	protected void initialize() {
+		gripperSubsystem.swapOverride();
+	}
 
 }
